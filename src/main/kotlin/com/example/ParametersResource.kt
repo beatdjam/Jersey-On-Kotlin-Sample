@@ -13,10 +13,9 @@ import javax.ws.rs.core.MediaType
 class ParametersResource {
 
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
+     * This method return object is request parameter string.
      *
-     * @return String that will be returned as a text/plain response.
+     * @return request parameter string
      */
     @GET
     @Path("/queryparam")
