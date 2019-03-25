@@ -1,9 +1,7 @@
 package com.example
 
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
-import javax.ws.rs.QueryParam
+import com.example.form.BeanParamSample
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
 /**
@@ -24,5 +22,22 @@ class ParametersResource {
         return if(parameter.isNullOrEmpty()) {
             "Parameter is Empty."
         } else parameter
+    }
+
+    /**
+     * This method return object is request parameter strings,
+     *
+     *
+     * @return request parameter string
+     */
+    @GET
+    @Path("/beanparam")
+    @Produces(MediaType.TEXT_PLAIN)
+    fun beanparam(@BeanParam parameter: BeanParamSample) :String {
+        return buildString {
+            appendln(parameter.parameter1)
+            appendln(parameter.parameter2)
+            appendln(parameter.parameter3)
+        }
     }
 }
