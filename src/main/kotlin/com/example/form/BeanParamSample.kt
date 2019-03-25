@@ -1,7 +1,7 @@
 package com.example.form
 
-import org.jetbrains.annotations.NotNull
 import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 import javax.ws.rs.QueryParam
 
 data class BeanParamSample (
@@ -9,10 +9,10 @@ data class BeanParamSample (
         val parameter1: String?,
 
         @QueryParam("parameter2")
-        @NotNull
+        @field:NotNull
         val parameter2: String?,
 
         @QueryParam("parameter3")
-        @NotEmpty
+        @field:NotEmpty
         val parameter3: String?
 )
