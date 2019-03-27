@@ -44,4 +44,18 @@ class ParametersResource {
             appendln(parameter.parameter3)
         }
     }
+
+    /**
+     * This method return object is path parameter strings.
+     *
+     * @return path parameter string
+     */
+    @GET
+    @Path("/pathparam/{parameter}")
+    fun pathParam(@PathParam("parameter") parameter: String?): String {
+        return if (parameter.isNullOrEmpty()) {
+            "Parameter is Empty."
+        } else parameter
+    }
+    
 }
