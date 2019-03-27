@@ -19,26 +19,26 @@ class ParametersResource {
     @GET
     @Path("/queryparam")
     @Produces(MediaType.TEXT_PLAIN)
-    fun queryParam(@QueryParam("parameter") parameter: String?) :String {
-        return if(parameter.isNullOrEmpty()) {
+    fun queryParam(@QueryParam("parameter") parameter: String?): String {
+        return if (parameter.isNullOrEmpty()) {
             "Parameter is Empty."
         } else parameter
     }
 
     /**
-     * This method return object is request parameter strings,
+     * This method return object is request parameter strings.
      *
      * @return request parameter string
      */
     @GET
     @Path("/beanparam")
     @Produces(MediaType.TEXT_PLAIN)
-    fun beanparam(@BeanParam @Valid parameter: BeanParamSample) :String {
+    fun beanparam(@BeanParam @Valid parameter: BeanParamSample): String {
         return buildString {
             appendln(
-                if(parameter.parameter1.isNullOrEmpty()) {
-                    "Parameter is Empty."
-                } else parameter.parameter1
+                    if (parameter.parameter1.isNullOrEmpty()) {
+                        "Parameter is Empty."
+                    } else parameter.parameter1
             )
             appendln(parameter.parameter2)
             appendln(parameter.parameter3)
