@@ -58,4 +58,18 @@ class ParametersResource {
         } else parameter
     }
     
+    /**
+     * This method return object is joined path parameter strings.
+     *
+     * @return path parameter string
+     */
+    @GET
+    @Path("/pathparam/{parameter1}.{parameter2}")
+    fun pathParamSplit(
+            @PathParam("parameter1") parameter1: String?,
+            @PathParam("parameter2") parameter2: String?
+    ): String {
+
+        return (parameter1 ?: "") + "-" +  (parameter2 ?: "")
+    }
 }
