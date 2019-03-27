@@ -57,7 +57,7 @@ class ParametersResource {
             "Parameter is Empty."
         } else parameter
     }
-    
+
     /**
      * This method return object is joined path parameter strings.
      *
@@ -71,5 +71,18 @@ class ParametersResource {
     ): String {
 
         return (parameter1 ?: "") + "-" +  (parameter2 ?: "")
+    }
+
+    /**
+     * This method return object is regex path parameter strings.
+     *
+     * @return path parameter string
+     */
+    @GET
+    @Path("/pathparam/regex/{regexMatched:.*}")
+    fun pathParamRegex(@PathParam("regexMatched") regexMatched: String?): String {
+        return if (regexMatched.isNullOrEmpty()) {
+            "Not matched by regex."
+        } else regexMatched
     }
 }
