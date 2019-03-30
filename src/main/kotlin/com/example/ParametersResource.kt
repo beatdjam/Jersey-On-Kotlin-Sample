@@ -52,6 +52,7 @@ class ParametersResource {
      */
     @GET
     @Path("/pathparam/{parameter}")
+    @Produces(MediaType.TEXT_PLAIN)
     fun pathParam(@PathParam("parameter") parameter: String?): String {
         return if (parameter.isNullOrEmpty()) {
             "Parameter is Empty."
@@ -65,12 +66,12 @@ class ParametersResource {
      */
     @GET
     @Path("/pathparam/{parameter1}.{parameter2}")
+    @Produces(MediaType.TEXT_PLAIN)
     fun pathParamSplit(
             @PathParam("parameter1") parameter1: String?,
             @PathParam("parameter2") parameter2: String?
     ): String {
-
-        return (parameter1 ?: "") + "-" +  (parameter2 ?: "")
+        return (parameter1 ?: "") + "." +  (parameter2 ?: "")
     }
 
     /**
@@ -80,9 +81,29 @@ class ParametersResource {
      */
     @GET
     @Path("/pathparam/regex/{regexMatched:.*}")
+    @Produces(MediaType.TEXT_PLAIN)
     fun pathParamRegex(@PathParam("regexMatched") regexMatched: String?): String {
         return if (regexMatched.isNullOrEmpty()) {
             "Not matched by regex."
         } else regexMatched
     }
+
+    /**
+     * This method return object is request form parameter strings.
+     *
+     * @return path parameter string
+     */
+    @POST
+    @Path("/formparam")
+    @Produces(MediaType.TEXT_PLAIN)
+    fun formParam(
+            @FormParam("form1") form1param : String?,
+            @FormParam("form2") form2param : String?
+    ): String {
+        return buildString {
+            appendln("form1 : $form1param")
+            appendln("form2 : $form2param")
+        }
+    }
+
 }
